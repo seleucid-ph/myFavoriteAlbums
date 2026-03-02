@@ -4,31 +4,32 @@ import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
+  const [screen, setScreen] = useState("splash")
   const [count, setCount] = useState(0)
+
+  function goToNum10(){
+    setScreen("num10")
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="parent">
+      {screen === "splash" && (
+        <div className="splashScreen">
+          <h2>This is the start screen</h2>
+          <button onClick={goToNum10}>Start the list</button>
+        </div>
+      )}
+
+      {screen === "num10" && (
+        <div className="numberedEntry">
+          <p>Number 10:</p>
+        </div>
+      )}
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
+    
   )
 }
 
